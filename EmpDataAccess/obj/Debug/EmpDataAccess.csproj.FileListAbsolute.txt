@@ -1,0 +1,12 @@
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EmpDataAccess.dll.config
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EmpDataAccess.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EmpDataAccess.pdb
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EntityFramework.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EntityFramework.xml
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\obj\Debug\EmpDataAccess.csprojAssemblyReference.cache
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\obj\Debug\EmpDataAccess.csproj.CoreCompileInputs.cache
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\obj\Debug\EmpDataAccess.csproj.CopyComplete
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\obj\Debug\EmpDataAccess.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpDataAccess\obj\Debug\EmpDataAccess.pdb
