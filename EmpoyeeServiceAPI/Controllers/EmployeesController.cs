@@ -18,15 +18,23 @@ namespace EmpoyeeServiceAPI.Controllers
                 return entities.Employees.ToList();
             }
         }
-
-        public Employee Employees(int id)
+        [HttpGet]
+        public HttpResponseMessage Employees(int id)
         {
             using (AvnishDBEntities entities = new AvnishDBEntities())
             {
-                return entities.Employees.FirstOrDefault(e => e.ID == id);
-                
+                var entity =  entities.Employees.FirstOrDefault(e => e.ID == id);
+                if(entity==null)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound,"Not Matching employee id ");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
             }
         }
+        [HttpPost]
         public HttpResponseMessage InsertEmp([FromBody] Employee employee)
         {
             try
@@ -44,6 +52,37 @@ namespace EmpoyeeServiceAPI.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
+        }
+
+        public HttpResponseMessage DeleteEmp(int id)
+        {
+            try
+            {
+
+
+                using (AvnishDBEntities entities = new AvnishDBEntities())
+                {
+                    var entity = entities.Employees.FirstOrDefault(e => e.ID == id);
+                    if (entity == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Not Matching employee id ");
+                    }
+                    else
+                    {
+                        entities.Employees.Remove(entity);
+                        entities.SaveChanges();
+                        var message = Request.CreateResponse(HttpStatusCode.OK);
+                        return message;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest , ex);
+            }
+
+            
         }
     }
 }
