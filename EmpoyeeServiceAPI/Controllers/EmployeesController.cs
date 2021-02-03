@@ -10,14 +10,36 @@ namespace EmpoyeeServiceAPI.Controllers
 {
     public class EmployeesController : ApiController
     {
+
         [HttpGet]
-        public IEnumerable<Employee > Employees()
+        public HttpResponseMessage Employees(string gender="all")
         {
-            using (AvnishDBEntities entities = new AvnishDBEntities())
+            using(AvnishDBEntities entities = new AvnishDBEntities())
             {
-                return entities.Employees.ToList();
+                switch (gender.ToLower())
+                {
+                    case "all":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.ToList());
+                    case "male":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
+                    case "female":
+                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
+                    default:
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "please provide all,maleand female in parameter");
+
+                }
             }
+            
+            
         }
+        //[HttpGet]
+        //public IEnumerable<Employee > Employees()
+        //{
+        //    using (AvnishDBEntities entities = new AvnishDBEntities())
+        //    {
+        //        return entities.Employees.ToList();
+        //    }
+        //}
         [HttpGet]
         public HttpResponseMessage Employees(int id)
         {
