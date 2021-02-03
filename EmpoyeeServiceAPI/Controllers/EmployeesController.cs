@@ -53,7 +53,7 @@ namespace EmpoyeeServiceAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
             }
         }
-
+        [HttpDelete ]
         public HttpResponseMessage DeleteEmp(int id)
         {
             try
@@ -82,6 +82,40 @@ namespace EmpoyeeServiceAPI.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest , ex);
             }
 
+            
+        }
+        [HttpPut ] 
+        public HttpResponseMessage UpdateEmp(int id,[FromBody ] Employee employee)
+        {
+            try
+            {
+                using (AvnishDBEntities enities = new AvnishDBEntities())
+                {
+                    var existingEmp = enities.Employees.FirstOrDefault(e => e.ID == id);
+                    if (existingEmp == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "employee not found to update");
+                    }
+                    else
+                    {
+                        existingEmp.FirstName = employee.FirstName;
+                        existingEmp.LastName = employee.LastName;
+                        existingEmp.Gender = employee.Gender;
+                        existingEmp.Salary = employee.Salary;
+                        enities.SaveChanges();
+                        var message = Request.CreateResponse(HttpStatusCode.OK, existingEmp);
+                        return message;
+
+                    }
+
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+            
             
         }
     }
