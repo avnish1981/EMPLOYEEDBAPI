@@ -90,3 +90,8 @@ F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\EmpDataAccess.dll.config
 F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\EntityFramework.xml
 F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\EntityFramework.SqlServer.dll
 F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\EntityFramework.SqlServer.xml
+F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\WebApiContrib.Formatting.Jsonp.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\WebApiContrib.Formatting.Jsonp.pdb
+F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\System.Web.Cors.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\System.Web.Http.Cors.dll
+F:\Avnish\EmpoyeeServiceAPI\EmpoyeeServiceAPI\bin\System.Web.Http.Cors.xml

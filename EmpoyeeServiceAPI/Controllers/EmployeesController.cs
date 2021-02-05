@@ -4,10 +4,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using EmpDataAccess;
 
 namespace EmpoyeeServiceAPI.Controllers
 {
+    [EnableCorsAttribute("http://localhost:54746", "*","*")]
     public class EmployeesController : ApiController
     {
 
@@ -41,6 +43,7 @@ namespace EmpoyeeServiceAPI.Controllers
         //    }
         //}
         [HttpGet]
+        [DisableCors ]
         public HttpResponseMessage Employees(int id)
         {
             using (AvnishDBEntities entities = new AvnishDBEntities())
@@ -57,7 +60,7 @@ namespace EmpoyeeServiceAPI.Controllers
             }
         }
         [HttpPost]
-        public HttpResponseMessage InsertEmp([FromBody] Employee employee)
+        public HttpResponseMessage InsertEmp([FromUri ] Employee employee)
         {
             try
             {
