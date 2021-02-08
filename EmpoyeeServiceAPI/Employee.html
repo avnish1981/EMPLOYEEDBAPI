@@ -8,8 +8,8 @@
         $(document).ready(function () {
             var ulEmployee = $('#ulEmployees');
             $('#btn').click(function () {
-                var username = $('txtUsername').val();
-                var password = $('txtPassword').val();
+                var username = $('#txtUsername').val();
+                var password = $('#txtPassword').val();
                 $.ajax({
                     type: 'GET',
                     url: 'api/employees',
