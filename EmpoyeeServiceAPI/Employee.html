@@ -8,10 +8,15 @@
         $(document).ready(function () {
             var ulEmployee = $('#ulEmployees');
             $('#btn').click(function () {
+                var username = $('txtUsername').val();
+                var password = $('txtPassword').val();
                 $.ajax({
                     type: 'GET',
                     url: 'api/employees',
                     dataType: 'json',
+                    headers: {
+                        'Authorization': 'Basic' + btoa(username + ':' + password)
+                    },
                     success: function (data) {
                         ulEmployee.empty();
                         $.each(data, function (index, val) {
@@ -19,6 +24,12 @@
                             var fullname = val.FirstName + ' ' + val.LastName;
                             ulEmployee.append('<li>' + fullname + '</li>');
                         });
+                    },
+                    complete: function (jqXHR) {
+                        if (jqXHR.status == '401') {
+                            ulEmployee.empty();
+                            ulEmployee.append('<li>' + jqXHR.status + ':' + jqXHR.statusText + '</li>')
+                        }
                     }
 
                 });
@@ -31,6 +42,11 @@
     </script>
 </head>
 <body>
+    UserName:<input type="text" id="txtUsername" />
+    Password:<input type="password" id="txtPassword" />
+    </br>
+    </br>
+
     <input type="button" id="btn" value="Get All Employee" />
     <input type="button" id="btnclear" value="Clear" />
     <ul id="ulEmployees"></ul>

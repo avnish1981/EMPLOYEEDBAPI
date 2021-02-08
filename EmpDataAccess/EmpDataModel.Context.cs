@@ -26,5 +26,6 @@ namespace EmpDataAccess
         }
     
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

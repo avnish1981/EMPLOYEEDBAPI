@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using EmpDataAccess;
@@ -14,20 +15,22 @@ namespace EmpoyeeServiceAPI.Controllers
     {
 
         [HttpGet]
+        [BasicAuthentication]
         public HttpResponseMessage Employees(string gender="all")
         {
+            string username = Thread.CurrentPrincipal.Identity.Name;
             using(AvnishDBEntities entities = new AvnishDBEntities())
             {
-                switch (gender.ToLower())
+                switch (username.ToLower())
                 {
-                    case "all":
-                        return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.ToList());
+                    //case "all":
+                    //    return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.ToList());
                     case "male":
                         return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "male").ToList());
                     case "female":
                         return Request.CreateResponse(HttpStatusCode.OK, entities.Employees.Where(e => e.Gender.ToLower() == "female").ToList());
                     default:
-                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "please provide all,maleand female in parameter");
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
 
                 }
             }
@@ -44,6 +47,7 @@ namespace EmpoyeeServiceAPI.Controllers
         //}
         [HttpGet]
         [DisableCors ]
+        [BasicAuthentication ]
         public HttpResponseMessage Employees(int id)
         {
             using (AvnishDBEntities entities = new AvnishDBEntities())
