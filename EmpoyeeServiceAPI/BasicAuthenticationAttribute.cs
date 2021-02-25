@@ -23,7 +23,7 @@ namespace EmpoyeeServiceAPI
            else
             {
                 string authenticationToken = actionContext.Request.Headers.Authorization.Parameter;
-                //here we are fetching username and password from request header , since it is basic authentication so username and pasword will be encocode i base 64 format 
+                //here we are fetching username and password from request header , since it is basic authentication so username and pasword will be encocode in base 64 format 
                 //so we are decoding and fetching username and password , Username:password
                 string decodedauthenticationToken = Encoding.UTF8.GetString( Convert.FromBase64String(authenticationToken));
                 string [] userNamePasswordarray = decodedauthenticationToken.Split(':');
